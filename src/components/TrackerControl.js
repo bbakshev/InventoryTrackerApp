@@ -63,8 +63,13 @@ class TrackerControl extends React.Component {
 
   handleSellingTracker = (id) => {
     let selectedTracker = this.state.masterTrackerList.find(tracker => tracker.id === id);
-    if (selectedTracker.quantity > 0 && this.state.poundsLeftInSack > 0) {
+    console.log("text");
+    if (!selectedTracker) {
+      return;
+    } else if (selectedTracker.quantity > 0 && this.state.poundsLeftInSack > 0) {
+      console.log("Before update: ", selectedTracker.quantity); 
       selectedTracker.quantity -= 1;
+      console.log("After update: ", selectedTracker.quantity);
       this.setState((prevState) => ({
         poundsLeftInSack: prevState.poundsLeftInSack - 1,
       }));
@@ -117,13 +122,11 @@ class TrackerControl extends React.Component {
       buttonText = "Return to Coffee Tracker List";
     } else {
       currentlyVisibleState = (
-        <div>
-          {/* <p>{this.state.poundsLeftInSack} pounds of coffee beans left in the burlap sack</p> */}
           <TrackerList
             trackerList={this.state.masterTrackerList}
             onTrackerSelection={this.handleChangingSelectedTracker}
+            poundsLeftInSack={this.state.poundsLeftInSack}
           />
-        </div>
       );
       buttonText = "Add Coffee";
     }

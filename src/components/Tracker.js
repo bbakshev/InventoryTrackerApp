@@ -16,13 +16,14 @@ function Tracker(props){
 }
 
 Tracker.propTypes = {
+  whenTrackerClicked: PropTypes.func,
   names: PropTypes.string,
   origin: PropTypes.string,
   price: PropTypes.string,
   roast: PropTypes.string,
   burlap: PropTypes.number,
   id: PropTypes.string,
-  whenTicketClicked: PropTypes.func
+  whenTrackerClicked: PropTypes.func
 };
 
 export default Tracker;

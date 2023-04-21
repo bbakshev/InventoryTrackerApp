@@ -8,16 +8,14 @@ function TrackerDetail(props){
   return (
     <React.Fragment>
       <h1>Tracker Details</h1>
-      <div>
         <TrackerList
           trackerList={trackerList}
           onTrackerSelection={onTrackerSelection}
         />
         <p>{poundsLeftInSack} pounds of coffee beans left in the burlap sack</p>
-      </div>
-      <button onClick={onClickingEdit}>Update Tracker</button>
-      <button onClick={() => onClickingDelete(tracker.id)}>Delete Tracker</button>
-      <button onClick={onClickingSell}>Sell Tracker</button>
+      <button onClick={onClickingEdit}>Update Coffee</button>
+      <button onClick={() => onClickingDelete(tracker.id)}>Delete Coffee Tracker</button>
+      <button onClick={onClickingSell}>Sell Coffee</button>
       <hr/>
     </React.Fragment>
   );

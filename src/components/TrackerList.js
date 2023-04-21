@@ -14,7 +14,7 @@ function TrackerList(props) {
           origin={tracker.origin}
           price={tracker.price}
           roast={tracker.roast}
-          burlap = {tracker.poundsLeftInSack}
+          burlap = {props.poundsLeftInSack}
           id={tracker.id}
           key={tracker.id}
         />
