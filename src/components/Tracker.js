@@ -19,7 +19,7 @@ Tracker.propTypes = {
   names: PropTypes.string,
   origin: PropTypes.string,
   price: PropTypes.string,
-  roast: PropTypes.string
+  roast: PropTypes.string,
   id: PropTypes.string,
   whenTicketClicked: PropTypes.func
 };
