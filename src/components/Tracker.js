@@ -20,6 +20,7 @@ Tracker.propTypes = {
   origin: PropTypes.string,
   price: PropTypes.string,
   roast: PropTypes.string,
+  burlap: PropTypes.number,
   id: PropTypes.string,
   whenTicketClicked: PropTypes.func
 };

@@ -100,10 +100,13 @@ class TrackerControl extends React.Component {
     } else if (this.state.selectedTracker != null) {
       currentlyVisibleState = (
         <TrackerDetail
-          tracker={this.state.selectedTracker}
-          onClickingDelete={this.handleDeletingTracker}
-          onClickingEdit={this.handleEditTrackerClick}
-          onClickingSell={this.handleSellingTracker}
+        tracker={this.state.selectedTracker}
+        onClickingDelete={this.handleDeletingTracker}
+        onClickingEdit={this.handleEditTrackerClick}
+        onClickingSell={this.handleSellingTracker}
+        poundsLeftInSack={this.state.poundsLeftInSack}
+        trackerList={this.state.masterTrackerList}
+        onTrackerSelection={this.handleChangingSelectedTracker}
         />
       );
       buttonText = "Return to Coffee Tracker List";
@@ -115,7 +118,7 @@ class TrackerControl extends React.Component {
     } else {
       currentlyVisibleState = (
         <div>
-          <p>{this.state.poundsLeftInSack} pounds of coffee beans left in the burlap sack</p>
+          {/* <p>{this.state.poundsLeftInSack} pounds of coffee beans left in the burlap sack</p> */}
           <TrackerList
             trackerList={this.state.masterTrackerList}
             onTrackerSelection={this.handleChangingSelectedTracker}
