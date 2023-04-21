@@ -12,6 +12,7 @@ class TrackerControl extends React.Component {
       masterTrackerList: [],
       selectedTracker: null,
       editing: false,
+      poundsLeftInSack: 130,
     };
   }
 
@@ -62,8 +63,11 @@ class TrackerControl extends React.Component {
 
   handleSellingTracker = (id) => {
     let selectedTracker = this.state.masterTrackerList.find(tracker => tracker.id === id);
-    if (selectedTracker.quantity > 0) {
+    if (selectedTracker.quantity > 0 && this.state.poundsLeftInSack > 0) {
       selectedTracker.quantity -= 1;
+      this.setState((prevState) => ({
+        poundsLeftInSack: prevState.poundsLeftInSack - 1,
+      }));
     }
     const newMasterTrackerList = this.state.masterTrackerList.filter(tracker => tracker.id !== id).concat(selectedTracker);
     this.setState({
@@ -71,4 +75,62 @@ class TrackerControl extends React.Component {
       selectedTracker: selectedTracker
     });
   }
+
+  handleDeletingTracker = (id) => {
+    const newMasterTrackerList = this.state.masterTrackerList.filter(
+      (tracker) => tracker.id !== id
+    );
+    this.setState({
+      masterTrackerList: newMasterTrackerList,
+      selectedTracker: null,
+    });
+  }
+
+  render() {
+    let currentlyVisibleState = null;
+    let buttonText = null;
+    if (this.state.editing) {
+      currentlyVisibleState = (
+        <EditTrackerForm
+          tracker={this.state.selectedTracker}
+          onEditTracker={this.handleEditingTrackerInList}
+        />
+      );
+      buttonText = "Return to Coffee Tracker List";
+    } else if (this.state.selectedTracker != null) {
+      currentlyVisibleState = (
+        <TrackerDetail
+          tracker={this.state.selectedTracker}
+          onClickingDelete={this.handleDeletingTracker}
+          onClickingEdit={this.handleEditTrackerClick}
+          onClickingSell={this.handleSellingTracker}
+        />
+      );
+      buttonText = "Return to Coffee Tracker List";
+    } else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = (
+        <NewTrackerForm onNewTrackerCreation={this.handleAddingNewTrackerToList} />
+      );
+      buttonText = "Return to Coffee Tracker List";
+    } else {
+      currentlyVisibleState = (
+        <div>
+          <p>{this.state.poundsLeftInSack} pounds of coffee beans left in the burlap sack</p>
+          <TrackerList
+            trackerList={this.state.masterTrackerList}
+            onTrackerSelection={this.handleChangingSelectedTracker}
+          />
+        </div>
+      );
+      buttonText = "Add Coffee";
+    }
+    return (
+      <React.Fragment>
+        {currentlyVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </React.Fragment>
+    );
+  }
 }
+
+export default TrackerControl;
