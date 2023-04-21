@@ -61,25 +61,13 @@ class TrackerControl extends React.Component {
     });
   };
 
-  handleSellingTracker = (id) => {
-    let selectedTracker = this.state.masterTrackerList.find(tracker => tracker.id === id);
-    console.log("text");
-    if (!selectedTracker) {
-      return;
-    } else if (selectedTracker.quantity > 0 && this.state.poundsLeftInSack > 0) {
-      console.log("Before update: ", selectedTracker.quantity); 
-      selectedTracker.quantity -= 1;
-      console.log("After update: ", selectedTracker.quantity);
+  handleSellingCoffee = () => {
+    if (this.state.poundsLeftInSack > 0) {
       this.setState((prevState) => ({
         poundsLeftInSack: prevState.poundsLeftInSack - 1,
       }));
     }
-    const newMasterTrackerList = this.state.masterTrackerList.filter(tracker => tracker.id !== id).concat(selectedTracker);
-    this.setState({
-      masterTrackerList: newMasterTrackerList,
-      selectedTracker: selectedTracker
-    });
-  }
+  };
 
   handleDeletingTracker = (id) => {
     const newMasterTrackerList = this.state.masterTrackerList.filter(
@@ -89,7 +77,7 @@ class TrackerControl extends React.Component {
       masterTrackerList: newMasterTrackerList,
       selectedTracker: null,
     });
-  }
+  };
 
   render() {
     let currentlyVisibleState = null;
@@ -105,28 +93,30 @@ class TrackerControl extends React.Component {
     } else if (this.state.selectedTracker != null) {
       currentlyVisibleState = (
         <TrackerDetail
-        tracker={this.state.selectedTracker}
-        onClickingDelete={this.handleDeletingTracker}
-        onClickingEdit={this.handleEditTrackerClick}
-        onClickingSell={this.handleSellingTracker}
-        poundsLeftInSack={this.state.poundsLeftInSack}
-        trackerList={this.state.masterTrackerList}
-        onTrackerSelection={this.handleChangingSelectedTracker}
+          tracker={selectedTracker}
+          onClickingDelete={this.handleDeletingTracker}
+          onClickingEdit={this.handleEditClick}
+          onTrackerSelection={this.handleChangingSelectedTracker}
+          poundsLeftInSack={poundsLeftInSack}
+          onSellCoffee={handleSellingCoffee}
+          trackerList={this.props.masterTrackerList}
         />
       );
       buttonText = "Return to Coffee Tracker List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = (
-        <NewTrackerForm onNewTrackerCreation={this.handleAddingNewTrackerToList} />
+        <NewTrackerForm
+          onNewTrackerCreation={this.handleAddingNewTrackerToList}
+        />
       );
       buttonText = "Return to Coffee Tracker List";
     } else {
       currentlyVisibleState = (
-          <TrackerList
-            trackerList={this.state.masterTrackerList}
-            onTrackerSelection={this.handleChangingSelectedTracker}
-            poundsLeftInSack={this.state.poundsLeftInSack}
-          />
+        <TrackerList
+          trackerList={this.state.masterTrackerList}
+          onTrackerSelection={this.handleChangingSelectedTracker}
+          poundsLeftInSack={this.state.poundsLeftInSack}
+        />
       );
       buttonText = "Add Coffee";
     }
