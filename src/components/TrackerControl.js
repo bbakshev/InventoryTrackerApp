@@ -88,7 +88,6 @@ class TrackerControl extends React.Component {
         tracker={this.state.selectedTracker}
         onClickingDelete={this.handleDeletingTracker}
         onClickingEdit={this.handleEditTrackerClick}
-        poundsLeftInSack={this.state.poundsLeftInSack}
         trackerList={this.state.masterTrackerList}
         onTrackerSelection={this.handleChangingSelectedTracker}
         />

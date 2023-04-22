@@ -1,33 +1,49 @@
 import React from "react";
-import PropTypes from "prop-types";
-import TrackerList from "./TrackerList";
 
-function TrackerDetail(props){
-  const { tracker, onClickingDelete, onClickingEdit, onSellCoffee, poundsLeftInSack, trackerList, onTrackerSelection } = props;
+class TrackerDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quantity: 130,
+    };
+  }
 
-  return (
-    <React.Fragment>
-      <h1>Tracker Details</h1>
-        <TrackerList
-          trackerList={trackerList}
-          onTrackerSelection={onTrackerSelection}
-        />
-        <p>pounds of coffee beans left in the burlap sack</p>
-      <button onClick={onClickingEdit}>Update Coffee</button>
-      <button onClick={() => onClickingDelete(tracker.id)}>Delete Coffee Tracker</button>
-      <button onClick={props.onSellCoffee}>Sell Coffee</button>
-      <hr/>
-    </React.Fragment>
-  );
+  handleSellClick = () => {
+    if (this.state.quantity === 0) {
+      return;
+    }
+    this.setState((prevState) => ({
+      quantity: prevState.quantity - 1,
+    }));
+  };
+
+  render() {
+    const { tracker, onClickingDelete, onClickingEdit } = this.props;
+    return (
+      <React.Fragment>
+        <h1>Tracker Details</h1>
+        <p>
+          <strong>Name of Coffee:</strong> {tracker.names}
+        </p>
+        <p>
+          <strong>Origin:</strong> {tracker.origin}
+        </p>
+        <p>
+          <strong>Price:</strong> ${tracker.price}
+        </p>
+        <p>
+          <strong>Roast Level:</strong> {tracker.roast}
+        </p>
+        <p>
+          <strong>Quantity:</strong> {this.state.quantity} lbs
+        </p>
+        <button onClick={this.handleSellClick}>Sell</button>
+        <button onClick={() => onClickingEdit(tracker.id)}>Edit</button>
+        <button onClick={() => onClickingDelete(tracker.id)}>Delete</button>
+        <hr />
+      </React.Fragment>
+    );
+  }
 }
-
-TrackerDetail.propTypes = {
-  tracker: PropTypes.object,
-  onClickingDelete: PropTypes.func,
-  onClickingEdit: PropTypes.func,
-  onSellCoffee: PropTypes.func,
-  trackerList: PropTypes.array,
-  onTrackerSelection: PropTypes.func
-};
 
 export default TrackerDetail;

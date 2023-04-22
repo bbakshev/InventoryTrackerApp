@@ -9,7 +9,6 @@ function Tracker(props){
       <p><em>Origin: {props.origin}</em></p>
       <p><em>Price: {props.price}</em></p>
       <p><em>Roast Level: {props.roast}</em></p>
-      {/* <p><em>Pounds left in Burlap Sack: {props.poundsLeftInSack}</em></p> */}
       <hr/>
       </div>
     </React.Fragment>
