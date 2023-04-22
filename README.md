@@ -1,6 +1,38 @@
-# Getting Started with Create React App
+# Coffee Inventory Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### By Brishna Bakshev
+
+#### _A React application that tracks inventory for a local business that includes CRUD functionality._
+
+## Description
+_The application has the following functionality:_
+
+* A user can see a list/menu of all available types of coffee beans.
+* For each inventory item, a user can see its name, origin, price, and roast (light, medium, or dark), and quantity of the coffee bean.
+* A user can click on a burlap sack to see its details page.
+* A user can see how many pounds of coffee beans are in stock.
+* A user can click a button to sell a pound of coffee beans. This should decrease the number of pounds remaining by 1. The quantity of coffee beans is not able to reduce below 0.
+
+## Technologies Used
+
+* _React_
+* _JSX_
+* _HTML/CSS_
+* _JavaScript_
+* _Node_
+
+## Component Diagram
+
+![component diagram](diagram.png)
+
+### Setup/Installation Requirements:
+
+* First, copy the git repository url and open a shell program & navigate to your machine's desktop
+* Clone the repository using the copied URL and the `git clone` command
+* In the shell program, navigate to the root directory of the newly created file called "inventory-tracker"
+* Run the `npm install` command to install dependencies
+* After the installation updates, in the root directory type `npm run start` to start the program
+* If the web page doesn't open on its own, open a web browser (such as Google Chrome) and enter the following into the URL: `http://localhost:3000/`
 
 ## Available Scripts
 
@@ -8,23 +40,18 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
+The page will reload when you make changes.
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+The build is minified and the filenames include the hashes.
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
@@ -39,32 +66,12 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Known Bugs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+N/A
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
+_[MIT](https://opensource.org/license/mit/)_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Copyright (c) 2023 _Brishna Bakshev_
